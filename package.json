@@ -1,0 +1,23 @@
+{
+  "name": "kp_bot",
+  "version": "1.0.0",
+  "description": "KP-Bot",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.30.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZioVio/KP_bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZioVio/KP_bot/issues"
+  },
+  "homepage": "https://github.com/ZioVio/KP_bot#readme"
+}
