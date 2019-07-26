@@ -1,4 +1,6 @@
 const TOKEN = require('./token.json')['token'];
+var MSG = require('./greeting_msg.json')['text']
+const PASS = require('./pass.json')['pass']
 
 var TelegramBot = require('node-telegram-bot-api');
 const bot = new TelegramBot(TOKEN, { polling: true, timeout: 500 });
@@ -9,8 +11,21 @@ bot.on('message', function (message) {
     if (message.new_chat_members != undefined) {
         console.log(message.new_chat_member.username);
         console.log(message.new_chat_member.id);
-        let msg = "Привет в чате! Прочитай гайды в закрепе. Это чат потока. Тут около 15+ 2-3 курсников и люди с твоего потока.  Мы тут только что ты помогать и травить байки)"
+        bot.sendMessage(message.chat.id, MSG)
     }
 });
+
+bot.onText(/\/change_text (.+)/, function onEchoText(msg, match) {
+    let cmd = match[1].split(' ')
+    if (cmd[0] == PASS) {
+        MSG = cmd.slice(1).join(' ')
+        bot.sendMessage(msg.chat.id, "Текст изменем")
+    }
+    // console.log(pass, new_msg)
+    // if (pass == PASS) {
+    //     MSG = new_msg
+    //     
+    // }
+  });
 
 bot.on('polling_error', (err) => {console.log(err)})
